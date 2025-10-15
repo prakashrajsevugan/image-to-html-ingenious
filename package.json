@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "node App.tsx",
+    "start": "react-scripts start",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
