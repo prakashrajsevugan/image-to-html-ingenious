@@ -54,7 +54,7 @@ export const Header = () => {
               alt="User"
               className="w-8 h-8 rounded-full"
             />
-            <span className="text-foreground font-medium text-sm">prakash</span>
+            <span className="text-foreground font-medium text-sm">Geforze</span>
           </div>
           
           <div className="text-right text-xs pl-3 border-l border-border">
