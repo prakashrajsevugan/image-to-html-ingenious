@@ -11,7 +11,7 @@ export const Header = () => {
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xl">G</span>
             </div>
-            <h1 className="text-2xl font-bold text-foreground tracking-wide">GEFORCE</h1>
+            <h1 className="text-2xl font-bold text-foreground tracking-wide">GEFORZE</h1>
           </div>
           
           <nav className="flex items-center gap-6">
