@@ -1,6 +1,7 @@
-import { Search, Bell, AlertCircle, User, Battery, Wifi } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
+import { Battery, Wifi } from "lucide-react";
+import { NotificationPanel } from "./NotificationPanel";
+import { AlertsDialog } from "./AlertsDialog";
+import { SearchDialog } from "./SearchDialog";
 
 export const Header = () => {
   return (
@@ -31,14 +32,8 @@ export const Header = () => {
         </div>
         
         <div className="flex items-center gap-3">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-            <Input 
-              placeholder="Search..." 
-              className="pl-10 w-48 h-9 bg-input border-border text-sm"
-            />
-          </div>
-          
+          <SearchDialog />
+
           <div className="flex items-center gap-2 px-3 py-1.5 bg-success/20 border border-success rounded-md">
             <Battery className="w-4 h-4 text-success" />
             <span className="text-success font-semibold text-xs">100%</span>
@@ -49,15 +44,10 @@ export const Header = () => {
             <span className="text-success font-semibold text-xs">GOOD</span>
           </div>
           
-          <button className="relative p-2 hover:bg-muted/20 rounded-lg transition-colors">
-            <Bell className="w-5 h-5 text-warning" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-warning rounded-full"></span>
-          </button>
+          <NotificationPanel />
           
-          <button className="p-2 hover:bg-muted/20 rounded-lg transition-colors">
-            <AlertCircle className="w-5 h-5 text-destructive" />
-          </button>
-          
+          <AlertsDialog />
+
           <div className="flex items-center gap-2 pl-3 border-l border-border">
             <img 
               src="https://api.dicebear.com/7.x/avataaars/svg?seed=prakash" 

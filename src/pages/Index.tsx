@@ -4,7 +4,7 @@ import { WaterTank } from "@/components/WaterTank";
 import { MetricCard } from "@/components/MetricCard";
 import { QualityGauge } from "@/components/QualityGauge";
 import { PowerToggle } from "@/components/PowerToggle";
-import { Button } from "@/components/ui/button";
+import { ReportDialog } from "@/components/ReportDialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 
@@ -87,9 +87,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-glow-primary">
-                Generate Full Report
-              </Button>
+              <ReportDialog areaData={currentData} activeArea={activeArea} />
             </Card>
           </div>
         </div>
