@@ -17,7 +17,7 @@ export const WaterTank = ({ level, maxLevel = 100 }: WaterTankProps) => {
           {scaleMarkers.map((marker) => (
             <div key={marker} className="flex items-center gap-2">
               <span className="text-sm font-semibold text-foreground w-10 text-right">
-                {marker}%
+                {marker}liter
               </span>
               <div className="w-4 h-0.5 bg-muted-foreground"></div>
             </div>
@@ -28,7 +28,7 @@ export const WaterTank = ({ level, maxLevel = 100 }: WaterTankProps) => {
         <div className="relative w-48 h-64 rounded-3xl border-4 border-muted overflow-hidden bg-card/30 backdrop-blur-sm">
           <div 
             className="absolute bottom-0 w-full transition-all duration-700 ease-out"
-            style={{ height: `${fillPercentage}liter` }}
+            style={{ height: `${fillPercentage}%` }}
           >
             <div className="h-full w-full bg-gradient-to-b from-primary/80 to-primary animate-pulse" />
             <div className="absolute top-0 w-full h-8 bg-primary/40 animate-[wave_3s_ease-in-out_infinite]" />
