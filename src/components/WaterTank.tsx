@@ -17,7 +17,7 @@ export const WaterTank = ({ level, maxLevel = 100 }: WaterTankProps) => {
           {scaleMarkers.map((marker) => (
             <div key={marker} className="flex items-center gap-2">
               <span className="text-sm font-semibold text-foreground w-10 text-right">
-                {marker} liter
+                {marker} l
               </span>
               <div className="w-4 h-0.5 bg-muted-foreground"></div>
             </div>
