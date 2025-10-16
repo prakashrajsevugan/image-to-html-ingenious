@@ -1,43 +1,66 @@
+import React from "react";
+
 interface WaterTankProps {
-  level: number;
-  maxLevel?: number;
+  level: number;       // Current water level
+  maxLevel?: number;   // Maximum tank capacity (default: 100)
 }
 
+// Scale component
+const Scale = ({ maxLevel }: { maxLevel: number }) => {
+  // Dynamic markers at 0%, 25%, 50%, 75%, 100%
+  const markers = Array.from({ length: 5 }, (_, i) => (maxLevel / 4) * i).reverse();
+
+  return (
+    <div className="flex flex-col justify-between h-64">
+      {markers.map((marker) => (
+        <div key={marker} className="flex items-center gap-2">
+          <span className="text-sm font-semibold text-foreground w-10 text-right">
+            {marker.toFixed(1)}L
+          </span>
+          <div className="w-4 h-0.5 bg-muted-foreground"></div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// WaterTank component
 export const WaterTank = ({ level, maxLevel = 100 }: WaterTankProps) => {
-  const fillPercentage = (level / maxLevel) * 100;
-  
-  // Scale markers at 0%, 25%, 50%, 75%, 100%
-  const scaleMarkers = [10, 7.5, 5.0, 2.5, 0];
-  
+  // Clamp level to [0, maxLevel] and calculate percentage
+  const fillPercentage = Math.min(Math.max((level / maxLevel) * 100, 0), 100);
+
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex items-end gap-4">
-        {/* Meter Scale on the Left */}
-        <div className="flex flex-col justify-between h-64" style={{ paddingBottom: '2px' }}>
-          {scaleMarkers.map((marker) => (
-            <div key={marker} className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-foreground w-10 text-right">
-                {marker}liter
-              </span>
-              <div className="w-4 h-0.5 bg-muted-foreground"></div>
-            </div>
-          ))}
-        </div>
+        {/* Left Scale */}
+        <Scale maxLevel={maxLevel} />
 
-        {/* Water Tank Container */}
-        <div className="relative w-48 h-64 rounded-3xl border-4 border-muted overflow-hidden bg-card/30 backdrop-blur-sm">
-          <div 
+        {/* Tank Container */}
+        <div
+          className="relative w-48 h-64 rounded-3xl border-4 border-muted overflow-hidden bg-card/30 backdrop-blur-sm"
+          role="progressbar"
+          aria-valuenow={level}
+          aria-valuemin={0}
+          aria-valuemax={maxLevel}
+          aria-label="Water Tank Level"
+        >
+          {/* Water Fill */}
+          <div
             className="absolute bottom-0 w-full transition-all duration-700 ease-out"
             style={{ height: `${fillPercentage}%` }}
           >
+            {/* Static fill gradient */}
             <div className="h-full w-full bg-gradient-to-b from-primary/80 to-primary animate-pulse" />
-            <div className="absolute top-0 w-full h-8 bg-primary/40 animate-[wave_3s_ease-in-out_infinite]" />
+
+            {/* Moving wave */}
+            <div className="absolute top-0 w-full h-8 bg-primary/40 animate-[wave_3s_linear_infinite] rounded-t-full" />
           </div>
         </div>
       </div>
-      
+
+      {/* Level Display */}
       <p className="text-lg font-semibold text-foreground">
-        Water Level: {fillPercentage.toFixed(0)}%
+        {level.toFixed(1)} / {maxLevel} L ({fillPercentage.toFixed(0)}%)
       </p>
     </div>
   );
