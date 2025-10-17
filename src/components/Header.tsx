@@ -1,4 +1,5 @@
 import { Battery, Wifi } from "lucide-react";
+import { Link } from "react-router-dom";
 import { NotificationPanel } from "./NotificationPanel";
 import { AlertsDialog } from "./AlertsDialog";
 import { SearchDialog } from "./SearchDialog";
@@ -16,15 +17,18 @@ export const Header = () => {
           </div>
           
           <nav className="flex items-center gap-6 ml-4">
-            <a href="#" className="text-foreground font-medium hover:text-primary transition-colors text-sm">
+            <Link to="/" className="text-foreground font-medium hover:text-primary transition-colors text-sm">
               Dashboard
-            </a>
+            </Link>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Analytics
             </a>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Reports
             </a>
+            <Link to="/lunar-bot-simulation" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              Lunar Simulation
+            </Link>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Settings
             </a>
